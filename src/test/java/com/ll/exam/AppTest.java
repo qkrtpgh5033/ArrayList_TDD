@@ -132,6 +132,43 @@ class AppTest {
         assertTrue(rs.contains("2 : 30"));
     }
 
+    @Test
+    void 배열_중간에_값_끼어넣기(){
+        ArrayList al = new ArrayList();
+        al.addAt(100, 0);
+        al.addAt(200, 1);
+        al.addAt(300, 2);
+        al.addAt(400, 3);
+        al.addAt(500, 4);
+        al.addAt(600, 2); // 2번좌석으로 새치기, 기존의 2번좌석 손님부터 끝 손님까지 뒤로 한칸씩 밀린다.
+        al.addAt(700, 0); // 0번좌석으로 새치기, 기존의 0번좌석 손님부터 끝 손님까지 뒤로 한칸씩 밀린다.
+
+        for ( int i = 0; i < al.size(); i++ ) {
+            int value = (int)al.get(i);
+            System.out.println(i +" : " + value);
+        }
+
+        // 출력
+        // 0 : 700
+        // 1 : 100
+        // 2 : 200
+        // 3 : 600
+        // 4 : 300
+        // 5 : 400
+        // 6 : 500
+        assertEquals(700, al.get(0));
+        assertEquals(100, al.get(1));
+        assertEquals(200, al.get(2));
+        assertEquals(600, al.get(3));
+        assertEquals(300, al.get(4));
+        assertEquals(400, al.get(5));
+        assertEquals(500, al.get(6));
+
+
+
+
+    }
+
 
 
 

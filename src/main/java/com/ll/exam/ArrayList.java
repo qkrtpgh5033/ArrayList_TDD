@@ -25,6 +25,23 @@ public class ArrayList {
         arr[lastIndex++] = value;
     }
 
+    public void addAt(int value, int index) {
+
+        if(lastIndex + 1 >= arr.length) {
+            int [] temp = arr.clone();
+            arr = new int[lastIndex * 2];
+            for(int i = 0; i < lastIndex; i++){
+                arr[i] = temp[i];
+            }
+        }
+
+        for(int i = lastIndex-1; i > index-1; i--){
+            arr[i  + 1] = arr[i];
+        }
+        arr[index] = value;
+        lastIndex++;
+    }
+
     public int get(int i) {
         return arr[i];
     }
